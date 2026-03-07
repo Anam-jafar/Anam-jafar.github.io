@@ -22,6 +22,7 @@
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="other-experiences.html" class="nav-link">Other Experiences</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#blog" class="nav-link">Blog</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <div class="nav-right">
@@ -41,22 +42,27 @@
       <a href="#experience" class="nav-link">Experience</a>
       <a href="other-experiences.html" class="nav-link">Other Experiences</a>
       <a href="#projects" class="nav-link">Projects</a>
+      <a href="#blog" class="nav-link">Blog</a>
       <a href="#contact" class="nav-link">Contact</a>
     </div>
 
     <!-- ========== HERO ========== -->
     <section id="home" class="hero">
+      <canvas id="hero-dots" class="hero-dots"></canvas>
       <div class="hero-wrap">
         <div class="hero-text">
           <span class="hero-greeting">Hello, I'm</span>
           <h1>Anam Ibn<br/>Jafar<span>.</span></h1>
           <p class="hero-desc">
-            A software engineer who turns ideas into well-crafted, scalable
-            products. I build things for the web with care and precision.
+              Backend Software Engineer specializing in web development, focused on building reliable and scalable web applications.
           </p>
           <div class="hero-cta">
             <a href="#projects" class="btn btn-fill">See My Work</a>
             <a href="assets/files/Resume_Technical_Anam_Ibn_Jafar.pdf" target="_blank" class="btn btn-ghost">Resume</a>
+            <button class="btn btn-ghost" id="intro-video-btn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              Watch Intro
+            </button>
           </div>
           <div class="hero-social">
             <a href="https://github.com/Anam-jafar" target="_blank" aria-label="GitHub">
@@ -88,12 +94,10 @@
         <div class="about-layout">
           <div class="about-bio reveal">
             <p>
-              I'm a software engineer with a deep love for clean architecture
-              and thoughtful design. From backend APIs to interactive frontends,
-              I enjoy the full spectrum of building products that people actually use.
+                Software engineer focused on backend development and web applications. I enjoy designing clean systems, building APIs, and maintaining reliable and scalable software.
             </p>
             <p>
-              I've worked across startups and established companies, shipping
+              I've worked across multiple companies, shipping
               features used by thousands. I care about performance, maintainability,
               and getting the details right.
             </p>
@@ -123,7 +127,7 @@
               <div class="skill-box">
                 <h4>Frontend</h4>
                 <ul>
-                  <li>React.js</li>
+                  <li>Blade UI Kit</li>
                   <li>Tailwind CSS</li>
                 </ul>
               </div>
@@ -164,10 +168,13 @@
             <div class="exp-role">
               <h3>Software Engineer</h3>
               <p class="exp-company">Awfatech Global</p>
+              <p class="exp-summary">Developing and maintaining large-scale systems for organizations across Malaysia, with a focus on institutional management, AI-driven data processing, and intelligent automation.</p>
               <ul class="exp-details">
-                <li>Built a financial dashboard to track funding and expenses for mosques across Selangor.</li>
-                <li>Developed a SaaS platform for managing mosque operations statewide.</li>
-                <li>Created a static data API service shared across multiple projects.</li>
+                <li>Built an institute management system for MAIS, serving 2,000+ religious institutes across Malaysia.</li>
+                <li>Enabled financial record tracking and streamlined institute operations through the platform.</li>
+                <li>Developed an AI-powered data extractor, similar to Google's Document AI, that extracts transactional information from bank statements.</li>
+                <li>Implemented background processing and function calling to handle 500+ extraction requests with robust validation, ensuring error-free delivery.</li>
+                <li>Currently building a RAG-based AI sales agent capable of taking orders and assisting organizations with sales operations.</li>
               </ul>
             </div>
           </div>
@@ -188,10 +195,13 @@
             <div class="exp-role">
               <h3>Software Engineer Trainee</h3>
               <p class="exp-company">SJ Innovation LLC</p>
+              <p class="exp-summary">Worked on CalystaPro, a large-scale EMR platform serving over 1,000 clinics, contributing to key modules and performance improvements across the system.</p>
               <ul class="exp-details">
-                <li>Built features, restructured the app, and optimized API performance.</li>
-                <li>Wrote migration scripts for seamless data transitions between PostgreSQL and MySQL.</li>
-                <li>Co-developed an AI assistant for doctor recommendations and appointment booking.</li>
+                <li>Built appointment booking and auto-scheduling features.</li>
+                <li>Developed the prescription management module.</li>
+                <li>Created an AI-powered chatbot for patient interaction and appointment booking.</li>
+                <li>Optimized complex SQL queries to reduce processing time.</li>
+                <li>Designed a KPI dashboard for real-time business performance tracking.</li>
               </ul>
             </div>
           </div>
@@ -379,6 +389,42 @@
       </div>
     </section>
 
+    <!-- ========== BLOG PREVIEW ========== -->
+    <section id="blog" class="sec">
+      <div class="sec-wrap">
+        <div class="sec-head reveal">
+          <span class="sec-label">Blog</span>
+          <h2>Latest Post.</h2>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card reveal">
+            <div class="blog-card-top">
+              <span class="blog-date">20th July, 2025</span>
+              <div class="blog-tags">
+                <span class="proj-tag">Laravel</span>
+                <span class="proj-tag">PHP</span>
+                <span class="proj-tag">Queues</span>
+              </div>
+            </div>
+            <h3>Background Processing in Laravel</h3>
+            <p class="blog-excerpt">
+              Don't make users wait. Learn how to offload heavy tasks like sending emails and processing files using Laravel Queues and Jobs.
+            </p>
+            <a href="blogs.html" class="proj-more blog-read-more">
+              Read More
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </article>
+        </div>
+        <div class="exp-other-link reveal">
+          <a href="blogs.html" class="btn btn-ghost">
+            See All Posts
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== CONTACT ========== -->
     <section id="contact" class="sec">
       <div class="sec-wrap">
@@ -418,6 +464,9 @@
           </div>
           <div class="reveal reveal-d2">
             <form id="contact-form" class="contact-form">
+              <input type="hidden" name="access_key" value="3d1b19d5-e9a9-4061-aa77-45d555cfee86" />
+              <input type="hidden" name="subject" value="New message from portfolio site" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
               <div class="form-field">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -446,6 +495,23 @@
       </div>
       <p>Designed & built by Anam Ibn Jafar &copy; 2025</p>
     </footer>
+
+    <!-- ========== INTRO VIDEO MODAL ========== -->
+    <div class="modal" id="intro-modal">
+      <div class="modal-box intro-modal-box">
+        <div class="modal-top">
+          <h2>Introduction</h2>
+          <button class="modal-x" id="close-intro" aria-label="Close">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4L4 14M4 4l10 10"/></svg>
+          </button>
+        </div>
+        <div class="modal-inner">
+          <div class="modal-vid">
+            <iframe id="intro-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ========== MODAL ========== -->
     <div class="modal" id="project-modal">

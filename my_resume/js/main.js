@@ -1,4 +1,112 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ====== HERO FLOATING PARTICLES ======
+  const dotCanvas = document.getElementById("hero-dots");
+  if (dotCanvas) {
+    const ctx = dotCanvas.getContext("2d");
+    const hero = dotCanvas.parentElement;
+    let particles = [];
+    let mouse = { x: -1000, y: -1000 };
+    const COUNT = 80;
+    const CONNECT_DIST = 150;
+    const MOUSE_RADIUS = 180;
+
+    function resize() {
+      dotCanvas.width = hero.offsetWidth;
+      dotCanvas.height = hero.offsetHeight;
+    }
+
+    function init() {
+      particles = [];
+      for (let i = 0; i < COUNT; i++) {
+        particles.push({
+          x: Math.random() * dotCanvas.width,
+          y: Math.random() * dotCanvas.height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          r: Math.random() * 1.5 + 1,
+        });
+      }
+    }
+
+    function isDark() {
+      return document.documentElement.getAttribute("data-theme") === "dark";
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, dotCanvas.width, dotCanvas.height);
+      const baseColor = isDark() ? "255,255,255" : "0,0,0";
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Mouse attraction
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_RADIUS && dist > 0) {
+          const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.02;
+          p.vx += dx * force;
+          p.vy += dy * force;
+        }
+
+        // Dampen velocity
+        p.vx *= 0.99;
+        p.vy *= 0.99;
+
+        // Move
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap edges
+        if (p.x < 0) p.x = dotCanvas.width;
+        if (p.x > dotCanvas.width) p.x = 0;
+        if (p.y < 0) p.y = dotCanvas.height;
+        if (p.y > dotCanvas.height) p.y = 0;
+
+        // Draw dot
+        const dotAlpha = dist < MOUSE_RADIUS ? 0.5 : 0.2;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${baseColor},${dotAlpha})`;
+        ctx.fill();
+
+        // Connect nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const ldx = p.x - p2.x;
+          const ldy = p.y - p2.y;
+          const lineDist = Math.sqrt(ldx * ldx + ldy * ldy);
+          if (lineDist < CONNECT_DIST) {
+            const lineAlpha = (1 - lineDist / CONNECT_DIST) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(${baseColor},${lineAlpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    hero.addEventListener("mousemove", (e) => {
+      const rect = hero.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    hero.addEventListener("mouseleave", () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    window.addEventListener("resize", () => { resize(); init(); });
+    resize();
+    init();
+    draw();
+  }
+
   // ====== THEME TOGGLE ======
   const html = document.documentElement;
   const themeBtn = document.getElementById("theme-toggle");
@@ -35,8 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====== SMOOTH SCROLL ======
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href.startsWith("#")) {
+        mobileNav.classList.remove("open");
+        return;
+      }
       e.preventDefault();
-      const target = document.querySelector(link.getAttribute("href"));
+      const target = document.querySelector(href);
       if (target) target.scrollIntoView({ behavior: "smooth" });
       mobileNav.classList.remove("open");
     });
@@ -67,6 +180,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   setActiveNav();
+
+  // ====== INTRO VIDEO MODAL ======
+  const introBtn = document.getElementById("intro-video-btn");
+  const introModal = document.getElementById("intro-modal");
+  const introVideo = document.getElementById("intro-video");
+  const closeIntro = document.getElementById("close-intro");
+
+  if (introBtn && introModal) {
+    introBtn.addEventListener("click", () => {
+      introVideo.src = "https://www.youtube.com/embed/kMBdIeo-eu0?autoplay=1&rel=0";
+      introModal.classList.add("open");
+      document.body.classList.add("no-scroll");
+    });
+
+    function closeIntroModal() {
+      introModal.classList.remove("open");
+      document.body.classList.remove("no-scroll");
+      introVideo.src = "";
+    }
+
+    closeIntro.addEventListener("click", closeIntroModal);
+    introModal.addEventListener("click", (e) => {
+      if (e.target === introModal) closeIntroModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && introModal.classList.contains("open")) closeIntroModal();
+    });
+  }
 
   // ====== SCROLL REVEAL ======
   const revealObs = new IntersectionObserver(
@@ -108,12 +249,30 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.textContent = "Sending...";
       btn.disabled = true;
 
-      setTimeout(() => {
-        alert("Thanks for reaching out! I'll get back to you soon.");
-        form.reset();
-        btn.textContent = orig;
-        btn.disabled = false;
-      }, 2000);
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: fd,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            btn.textContent = "Sent!";
+            form.reset();
+            setTimeout(() => {
+              btn.textContent = orig;
+              btn.disabled = false;
+            }, 2000);
+          } else {
+            alert("Something went wrong. Please try again.");
+            btn.textContent = orig;
+            btn.disabled = false;
+          }
+        })
+        .catch(() => {
+          alert("Failed to send. Please try again later.");
+          btn.textContent = orig;
+          btn.disabled = false;
+        });
     });
   }
 

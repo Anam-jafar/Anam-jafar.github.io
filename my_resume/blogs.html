@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Anam Ibn Jafar</title>
+    <meta name="description" content="Blog posts about software engineering, automation, and development experiences." />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!-- ========== NAV ========== -->
+    <nav class="nav" id="nav">
+      <div class="nav-wrap">
+        <a href="index.html#home" class="nav-brand">
+          <img src="assets/images/signature.png" alt="Anam Ibn Jafar" class="nav-signature" />
+        </a>
+        <ul class="nav-menu">
+          <li><a href="index.html#home" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+          <li><a href="other-experiences.html" class="nav-link">Other Experiences</a></li>
+          <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+          <li><a href="blogs.html" class="nav-link active">Blog</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#experience" class="nav-link">Experience</a>
+      <a href="other-experiences.html" class="nav-link">Other Experiences</a>
+      <a href="index.html#projects" class="nav-link">Projects</a>
+      <a href="blogs.html" class="nav-link">Blog</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- ========== BLOG ========== -->
+    <section class="sec blog-page">
+      <div class="sec-wrap">
+        <div class="sec-head reveal">
+          <span class="sec-label">Blog</span>
+          <h2>Thoughts & Learnings.</h2>
+          <p>Writing about things I build, problems I solve, and lessons I learn along the way.</p>
+        </div>
+
+        <div class="blog-grid">
+
+          <!-- Blog 1 -->
+          <article class="blog-card reveal" data-blog="blog_01">
+            <div class="blog-card-top">
+              <span class="blog-date">29th May, 2025</span>
+              <div class="blog-tags">
+                <span class="proj-tag">Python</span>
+                <span class="proj-tag">Google APIs</span>
+              </div>
+            </div>
+            <h3>Log Activity Automation</h3>
+            <p class="blog-excerpt">
+              Built a tool that reads GitHub commits and auto-logs daily tasks to Google Sheets — because I kept forgetting to fill in my task sheet.
+            </p>
+            <button class="proj-more blog-read-more">
+              Read More
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </button>
+          </article>
+
+          <!-- Blog 2 -->
+          <article class="blog-card reveal reveal-d1" data-blog="blog_02">
+            <div class="blog-card-top">
+              <span class="blog-date">12th June, 2025</span>
+              <div class="blog-tags">
+                <span class="proj-tag">Linux</span>
+                <span class="proj-tag">Cloudflare</span>
+                <span class="proj-tag">SSH</span>
+              </div>
+            </div>
+            <h3>Turn Your Old Laptop Into a Mini Server</h3>
+            <p class="blog-excerpt">
+              Don't throw away that old laptop. Install Ubuntu Server, set up Cloudflare Tunnel, and SSH into it from anywhere in the world.
+            </p>
+            <button class="proj-more blog-read-more">
+              Read More
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </button>
+          </article>
+
+          <!-- Blog 3 -->
+          <article class="blog-card reveal reveal-d2" data-blog="blog_03">
+            <div class="blog-card-top">
+              <span class="blog-date">25th June, 2025</span>
+              <div class="blog-tags">
+                <span class="proj-tag">Nginx</span>
+                <span class="proj-tag">DevOps</span>
+              </div>
+            </div>
+            <h3>How to Set Up Nginx Reverse Proxy</h3>
+            <p class="blog-excerpt">
+              Running multiple projects on one server but only port 80 is open? Nginx reverse proxy routes traffic to the right app using location blocks.
+            </p>
+            <button class="proj-more blog-read-more">
+              Read More
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </button>
+          </article>
+
+          <!-- Blog 4 -->
+          <article class="blog-card reveal" data-blog="blog_04">
+            <div class="blog-card-top">
+              <span class="blog-date">8th July, 2025</span>
+              <div class="blog-tags">
+                <span class="proj-tag">Linux</span>
+                <span class="proj-tag">Cron</span>
+                <span class="proj-tag">Bash</span>
+              </div>
+            </div>
+            <h3>How to Set Up a Cron Job</h3>
+            <p class="blog-excerpt">
+              Automate repetitive tasks with cron. A step-by-step guide with a real example — fetching weather data every morning and writing it to a file.
+            </p>
+            <button class="proj-more blog-read-more">
+              Read More
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </button>
+          </article>
+
+          <!-- Blog 5 -->
+          <article class="blog-card reveal reveal-d1" data-blog="blog_05">
+            <div class="blog-card-top">
+              <span class="blog-date">20th July, 2025</span>
+              <div class="blog-tags">
+                <span class="proj-tag">Laravel</span>
+                <span class="proj-tag">PHP</span>
+                <span class="proj-tag">Queues</span>
+              </div>
+            </div>
+            <h3>Background Processing in Laravel</h3>
+            <p class="blog-excerpt">
+              Don't make users wait. Learn how to offload heavy tasks like sending emails and processing files using Laravel Queues and Jobs.
+            </p>
+            <button class="proj-more blog-read-more">
+              Read More
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BLOG MODAL ========== -->
+    <div class="modal" id="blog-modal">
+      <div class="modal-box blog-modal-box">
+        <div class="modal-top">
+          <h2 id="blog-modal-title"></h2>
+          <button class="modal-x" id="close-blog-modal" aria-label="Close">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4L4 14M4 4l10 10"/></svg>
+          </button>
+        </div>
+        <div class="modal-inner">
+          <div class="blog-modal-meta" id="blog-modal-meta"></div>
+          <div class="modal-vid" id="blog-modal-vid" style="display:none;">
+            <iframe id="blog-modal-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="blog-modal-body" id="blog-modal-body"></div>
+          <div class="blog-modal-links" id="blog-modal-links"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://github.com/Anam-jafar" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/ibn-jafar" target="_blank">LinkedIn</a>
+        <a href="mailto:anamibnjafar@gmail.com">Email</a>
+      </div>
+      <p>Designed & built by Anam Ibn Jafar &copy; 2025</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Theme
+        const html = document.documentElement;
+        const themeBtn = document.getElementById("theme-toggle");
+        const stored = localStorage.getItem("theme");
+        if (stored) {
+          html.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          html.setAttribute("data-theme", "dark");
+        }
+        themeBtn.addEventListener("click", () => {
+          const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          html.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+        });
+
+        // Nav scroll
+        const nav = document.getElementById("nav");
+        window.addEventListener("scroll", () => {
+          nav.classList.toggle("scrolled", window.scrollY > 30);
+        });
+
+        // Mobile menu
+        const hamburger = document.getElementById("nav-hamburger");
+        const mobileNav = document.getElementById("mobile-nav");
+        hamburger.addEventListener("click", () => {
+          mobileNav.classList.toggle("open");
+        });
+
+        // Scroll reveal
+        const revealObs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                revealObs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+        );
+        document.querySelectorAll(".reveal").forEach((el) => revealObs.observe(el));
+
+        // Blog data
+        const blogData = {
+          blog_01: {
+            title: "Log Activity Automation",
+            date: "29th May, 2025",
+            tags: ["Python", "Google APIs"],
+            videoId: "gPqIBOgU-io",
+            html: `
+              <p>Many times in a month, I hear: "Why haven't you logged your daily task?" Sometimes I work a lot but still get scolded just because I forgot to log it.</p>
+              <p>In my current company, we use Google Sheets for daily task logging. So I thought — why not make a shortcut? What if my program does the logging, and I just focus on coding?</p>
+              <p>This works well for me because most of my work involves development, and my GitHub commits reflect what I've done. So I built a small tool that fetches my commits and updates the Google Sheet automatically using the Google Sheets API. Now, I don't have to think about logging — my code does it for me.</p>
+              <p>It's a small thing, but I enjoyed building it. Solving my own problem and improving my daily workflow through code feels great.</p>
+            `,
+            links: [
+              { label: "GitHub Repository", url: "https://github.com/Anam-jafar/daily-task-logger" },
+            ],
+          },
+
+          blog_02: {
+            title: "Turn Your Old Laptop Into a Mini Server",
+            date: "12th June, 2025",
+            tags: ["Linux", "Cloudflare", "SSH"],
+            html: `
+              <p>Got an old laptop collecting dust? Don't throw it away — turn it into a personal server you can access from anywhere in the world. Here's how I did it.</p>
+
+              <h4>The Architecture</h4>
+              <div class="blog-diagram">
+                <div class="diagram-box">You (Anywhere)</div>
+                <div class="diagram-arrow">SSH via Cloudflare</div>
+                <div class="diagram-box">Cloudflare Tunnel</div>
+                <div class="diagram-arrow">Secure Connection</div>
+                <div class="diagram-box">Your Old Laptop (Ubuntu Server)</div>
+              </div>
+
+              <h4>Step 1: Install Ubuntu Server</h4>
+              <p>Download the Ubuntu Server ISO from the official site. Flash it to a USB drive using tools like Rufus or Balena Etcher. Boot the laptop from USB, follow the installer, and make sure to enable OpenSSH during setup.</p>
+              <pre><code># After installation, update everything
+sudo apt update && sudo apt upgrade -y
+
+# Verify SSH is running
+sudo systemctl status ssh</code></pre>
+
+              <h4>Step 2: Install Cloudflare Tunnel (cloudflared)</h4>
+              <p>Cloudflare Tunnel lets you expose your server to the internet without opening ports on your router. No static IP needed, no port forwarding headaches.</p>
+              <pre><code># Install cloudflared
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
+sudo apt update && sudo apt install cloudflared -y
+
+# Authenticate with Cloudflare
+cloudflared tunnel login</code></pre>
+
+              <h4>Step 3: Buy a Cheap Domain</h4>
+              <p>Get a cheap domain from Cloudflare Registrar, Namecheap, or any registrar. Point your domain's nameservers to Cloudflare. Domains like <code>.xyz</code> or <code>.online</code> cost as little as $1/year.</p>
+
+              <h4>Step 4: Create and Configure the Tunnel</h4>
+              <pre><code># Create a tunnel
+cloudflared tunnel create my-server
+
+# Configure the tunnel (create config file)
+mkdir -p ~/.cloudflared
+cat > ~/.cloudflared/config.yml << EOF
+tunnel: &lt;YOUR_TUNNEL_ID&gt;
+credentials-file: /home/your-user/.cloudflared/&lt;TUNNEL_ID&gt;.json
+
+ingress:
+  - hostname: ssh.yourdomain.xyz
+    service: ssh://localhost:22
+  - service: http_status:404
+EOF
+
+# Route DNS
+cloudflared tunnel route dns my-server ssh.yourdomain.xyz
+
+# Run the tunnel
+cloudflared tunnel run my-server</code></pre>
+
+              <h4>Step 5: Set Up cloudflared as a Service</h4>
+              <pre><code># Install as a system service so it runs on boot
+sudo cloudflared service install
+sudo systemctl enable cloudflared
+sudo systemctl start cloudflared</code></pre>
+
+              <h4>Step 6: SSH From Anywhere</h4>
+              <p>On your client machine, install cloudflared and add this to your <code>~/.ssh/config</code>:</p>
+              <pre><code>Host my-server
+    HostName ssh.yourdomain.xyz
+    ProxyCommand cloudflared access ssh --hostname %h
+    User your-username</code></pre>
+              <p>Now simply run:</p>
+              <pre><code>ssh my-server</code></pre>
+              <p>That's it! You now have a personal server accessible from anywhere, secured behind Cloudflare's network. No open ports, no static IP, no VPN needed.</p>
+            `,
+            links: [],
+          },
+
+          blog_03: {
+            title: "How to Set Up Nginx Reverse Proxy",
+            date: "25th June, 2025",
+            tags: ["Nginx", "DevOps"],
+            html: `
+              <h4>What is Nginx?</h4>
+              <p>Nginx (pronounced "engine-x") is a high-performance web server that can also act as a reverse proxy, load balancer, and HTTP cache. It's lightweight, fast, and handles thousands of concurrent connections efficiently.</p>
+
+              <h4>Why Do You Need a Reverse Proxy?</h4>
+              <p>Imagine this: you have a single server running 3 different projects — a Laravel app on port 8000, a FastAPI service on port 8001, and a React app on port 3000. But your server only exposes port 80 (HTTP) and 443 (HTTPS) to the outside world.</p>
+              <p>How do you serve all three? You can't tell users to visit <code>yoursite.com:8001</code>. This is where Nginx reverse proxy comes in — it listens on port 80 and routes requests to the correct app based on the URL path.</p>
+
+              <div class="blog-diagram">
+                <div class="diagram-box">Client Request<br/><small>yoursite.com/api/...</small></div>
+                <div class="diagram-arrow">Port 80</div>
+                <div class="diagram-box">Nginx<br/><small>Reverse Proxy</small></div>
+                <div class="diagram-arrow">Routes to</div>
+                <div class="diagram-box">App 1 :8000<br/>App 2 :8001<br/>App 3 :3000</div>
+              </div>
+
+              <h4>Step 1: Install Nginx</h4>
+              <pre><code>sudo apt update
+sudo apt install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx</code></pre>
+
+              <h4>Step 2: Configure Location Blocks</h4>
+              <p>Edit the Nginx config to define a location block for each project. Each prefix route maps to a different backend service.</p>
+              <pre><code>sudo nano /etc/nginx/sites-available/default</code></pre>
+              <p>Replace the contents with:</p>
+              <pre><code>server {
+    listen 80;
+    server_name yoursite.com;
+
+    # Project 1 — Laravel App
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # Project 2 — FastAPI Service
+    location /api/ {
+        proxy_pass http://127.0.0.1:8001/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # Project 3 — React Dashboard
+    location /dashboard/ {
+        proxy_pass http://127.0.0.1:3000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}</code></pre>
+
+              <h4>How It Works</h4>
+              <ul>
+                <li><code>yoursite.com/</code> → hits the Laravel app on port 8000</li>
+                <li><code>yoursite.com/api/users</code> → hits the FastAPI service on port 8001 at <code>/users</code></li>
+                <li><code>yoursite.com/dashboard/</code> → hits the React app on port 3000</li>
+              </ul>
+              <p>Notice the trailing slash in <code>proxy_pass</code> — this strips the prefix. So <code>/api/users</code> gets forwarded as <code>/users</code> to the FastAPI backend.</p>
+
+              <h4>Step 3: Test and Reload</h4>
+              <pre><code># Test config for syntax errors
+sudo nginx -t
+
+# Reload Nginx
+sudo systemctl reload nginx</code></pre>
+
+              <h4>Bonus: Add SSL with Certbot</h4>
+              <pre><code>sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d yoursite.com</code></pre>
+              <p>Certbot will automatically configure HTTPS and set up auto-renewal. Now all your projects are served securely through a single entry point.</p>
+            `,
+            links: [],
+          },
+
+          blog_04: {
+            title: "How to Set Up a Cron Job",
+            date: "8th July, 2025",
+            tags: ["Linux", "Cron", "Bash"],
+            html: `
+              <h4>What is Cron?</h4>
+              <p>Cron is a time-based job scheduler in Unix/Linux systems. It lets you run scripts or commands automatically at specified intervals — every minute, every hour, every day, or any custom schedule. It's perfect for automating repetitive tasks like backups, log cleanup, data fetching, and more.</p>
+
+              <h4>Cron Syntax</h4>
+              <p>A cron expression has 5 fields:</p>
+              <pre><code>┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ ┌───────────── day of week (0 - 7, 0 and 7 = Sunday)
+│ │ │ │ │
+* * * * *  command_to_run</code></pre>
+              <p>Examples:</p>
+              <ul>
+                <li><code>0 9 * * *</code> — Every day at 9:00 AM</li>
+                <li><code>*/5 * * * *</code> — Every 5 minutes</li>
+                <li><code>0 0 * * 0</code> — Every Sunday at midnight</li>
+                <li><code>30 6 1 * *</code> — 6:30 AM on the 1st of every month</li>
+              </ul>
+
+              <h4>Real Example: Daily Weather Logger</h4>
+              <p>Let's build a cron job that fetches the weather every morning at 7:00 AM and writes it to a log file. We'll use the free <strong>wttr.in</strong> API.</p>
+
+              <h4>Step 1: Create the Script</h4>
+              <pre><code>mkdir -p ~/scripts
+nano ~/scripts/weather.sh</code></pre>
+              <p>Add the following:</p>
+              <pre><code>#!/bin/bash
+
+# Weather logger script
+LOG_FILE="$HOME/weather_log.txt"
+CITY="Dhaka"
+
+# Fetch weather
+WEATHER=$(curl -s "wttr.in/$CITY?format=%C+%t+%h+%w")
+
+# Get current date and time
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+
+# Write to log
+echo "[$TIMESTAMP] $CITY: $WEATHER" >> "$LOG_FILE"</code></pre>
+
+              <h4>Step 2: Make It Executable</h4>
+              <pre><code>chmod +x ~/scripts/weather.sh</code></pre>
+
+              <h4>Step 3: Test It</h4>
+              <pre><code># Run it manually first
+./scripts/weather.sh
+
+# Check the output
+cat ~/weather_log.txt
+# [2025-07-08 07:00:00] Dhaka: Partly cloudy +32°C 78% ↑11km/h</code></pre>
+
+              <h4>Step 4: Set Up the Cron Job</h4>
+              <pre><code># Open the crontab editor
+crontab -e
+
+# Add this line at the bottom:
+0 7 * * * /home/your-username/scripts/weather.sh</code></pre>
+              <p>This runs the script every day at 7:00 AM. The weather info gets appended to <code>~/weather_log.txt</code>.</p>
+
+              <h4>Step 5: Verify</h4>
+              <pre><code># List your cron jobs
+crontab -l
+
+# Check cron logs (Ubuntu)
+grep CRON /var/log/syslog | tail -5</code></pre>
+
+              <h4>Common Gotchas</h4>
+              <ul>
+                <li>Cron uses a minimal environment — always use full paths for commands (e.g., <code>/usr/bin/curl</code> instead of just <code>curl</code>)</li>
+                <li>Redirect errors to see what went wrong: <code>0 7 * * * /home/user/scripts/weather.sh 2>&1 >> /home/user/cron.log</code></li>
+                <li>Make sure the script is executable (<code>chmod +x</code>)</li>
+              </ul>
+              <p>That's it! You now have an automated weather logger. Apply the same pattern to any task — database backups, log rotation, API polling, deployment scripts — the possibilities are endless.</p>
+            `,
+            links: [],
+          },
+
+          blog_05: {
+            title: "Background Processing in Laravel",
+            date: "20th July, 2025",
+            tags: ["Laravel", "PHP", "Queues"],
+            html: `
+              <h4>The Problem</h4>
+              <p>Your user clicks "Place Order" and your app needs to send a confirmation email, generate a PDF invoice, notify the admin, and update analytics. If you do all this synchronously in the controller, the user stares at a loading spinner for 10+ seconds. That's a terrible experience.</p>
+
+              <h4>The Solution: Queues & Jobs</h4>
+              <p>Laravel's queue system lets you defer time-consuming tasks to be processed in the background. The user gets an instant response, and the heavy work happens behind the scenes.</p>
+
+              <div class="blog-diagram">
+                <div class="diagram-box">User Request</div>
+                <div class="diagram-arrow">Instant Response</div>
+                <div class="diagram-box">Controller<br/><small>Dispatches Job</small></div>
+                <div class="diagram-arrow">Background</div>
+                <div class="diagram-box">Queue Worker<br/><small>Processes Job</small></div>
+              </div>
+
+              <h4>Step 1: Configure Queue Driver</h4>
+              <p>In your <code>.env</code> file, set the queue driver. For production, use Redis or database. For local testing, <code>database</code> is simplest:</p>
+              <pre><code>QUEUE_CONNECTION=database</code></pre>
+              <p>Create the jobs table:</p>
+              <pre><code>php artisan queue:table
+php artisan migrate</code></pre>
+
+              <h4>Step 2: Create a Job</h4>
+              <pre><code>php artisan make:job SendOrderConfirmation</code></pre>
+              <p>This creates <code>app/Jobs/SendOrderConfirmation.php</code>:</p>
+              <pre><code>&lt;?php
+
+namespace App\\Jobs;
+
+use App\\Models\\Order;
+use App\\Mail\\OrderConfirmationMail;
+use Illuminate\\Bus\\Queueable;
+use Illuminate\\Contracts\\Queue\\ShouldQueue;
+use Illuminate\\Foundation\\Bus\\Dispatchable;
+use Illuminate\\Queue\\InteractsWithQueue;
+use Illuminate\\Queue\\SerializesModels;
+use Illuminate\\Support\\Facades\\Mail;
+
+class SendOrderConfirmation implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public function __construct(
+        public Order $order
+    ) {}
+
+    public function handle(): void
+    {
+        Mail::to($this->order->user->email)
+            ->send(new OrderConfirmationMail($this->order));
+    }
+
+    public int $tries = 3;
+
+    public function backoff(): array
+    {
+        return [30, 60, 120];
+    }
+}</code></pre>
+
+              <h4>Step 3: Dispatch the Job</h4>
+              <p>In your controller, dispatch the job instead of doing the work inline:</p>
+              <pre><code>// Before (slow - user waits)
+Mail::to($order->user->email)->send(new OrderConfirmationMail($order));
+
+// After (fast - user gets instant response)
+SendOrderConfirmation::dispatch($order);</code></pre>
+
+              <h4>Step 4: Run the Queue Worker</h4>
+              <pre><code># Start processing queued jobs
+php artisan queue:work
+
+# For production, use with retry and timeout
+php artisan queue:work --tries=3 --timeout=90</code></pre>
+
+              <h4>Job Chaining</h4>
+              <p>Need multiple jobs to run in sequence? Chain them:</p>
+              <pre><code>use Illuminate\\Support\\Facades\\Bus;
+
+Bus::chain([
+    new SendOrderConfirmation($order),
+    new GenerateInvoicePdf($order),
+    new NotifyAdmin($order),
+])->dispatch();</code></pre>
+
+              <h4>Delayed Jobs</h4>
+              <p>Need to run a job after a delay?</p>
+              <pre><code>// Send a follow-up email 24 hours later
+SendFollowUpEmail::dispatch($order)
+    ->delay(now()->addHours(24));</code></pre>
+
+              <h4>Monitoring Failed Jobs</h4>
+              <pre><code># Create the failed jobs table
+php artisan queue:failed-table
+php artisan migrate
+
+# View failed jobs
+php artisan queue:failed
+
+# Retry a specific failed job
+php artisan queue:retry &lt;job-id&gt;
+
+# Retry all failed jobs
+php artisan queue:retry all</code></pre>
+
+              <h4>Production Tip: Use Supervisor</h4>
+              <p>In production, use Supervisor to keep the queue worker running and auto-restart it if it crashes:</p>
+              <pre><code>[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/your-app/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+numprocs=2
+redirect_stderr=true
+stdout_logfile=/var/log/worker.log</code></pre>
+              <p>Background processing is one of the most impactful patterns in Laravel. It keeps your app fast, your users happy, and your server resources well-utilized.</p>
+            `,
+            links: [],
+          },
+        };
+
+        // Blog modal
+        const blogModal = document.getElementById("blog-modal");
+        const blogModalTitle = document.getElementById("blog-modal-title");
+        const blogModalMeta = document.getElementById("blog-modal-meta");
+        const blogModalVid = document.getElementById("blog-modal-vid");
+        const blogModalVideo = document.getElementById("blog-modal-video");
+        const blogModalBody = document.getElementById("blog-modal-body");
+        const blogModalLinks = document.getElementById("blog-modal-links");
+        const closeBlogBtn = document.getElementById("close-blog-modal");
+
+        function openBlogModal(blog) {
+          blogModalTitle.textContent = blog.title;
+
+          blogModalMeta.innerHTML = "";
+          const dateSpan = document.createElement("span");
+          dateSpan.className = "blog-modal-date";
+          dateSpan.textContent = blog.date;
+          blogModalMeta.appendChild(dateSpan);
+          blog.tags.forEach((t) => {
+            const tag = document.createElement("span");
+            tag.className = "proj-tag";
+            tag.textContent = t;
+            blogModalMeta.appendChild(tag);
+          });
+
+          if (blog.videoId) {
+            blogModalVid.style.display = "block";
+            blogModalVideo.src = "https://www.youtube.com/embed/" + blog.videoId + "?rel=0";
+          } else {
+            blogModalVid.style.display = "none";
+          }
+
+          blogModalBody.innerHTML = blog.html;
+
+          blogModalLinks.innerHTML = "";
+          if (blog.links && blog.links.length) {
+            blog.links.forEach((link) => {
+              const a = document.createElement("a");
+              a.href = link.url;
+              a.target = "_blank";
+              a.textContent = link.label;
+              a.className = "btn btn-ghost blog-link";
+              blogModalLinks.appendChild(a);
+            });
+          }
+
+          blogModal.classList.add("open");
+          document.body.classList.add("no-scroll");
+        }
+
+        function closeBlogModal() {
+          blogModal.classList.remove("open");
+          document.body.classList.remove("no-scroll");
+          blogModalVideo.src = "";
+        }
+
+        document.querySelectorAll("[data-blog]").forEach((card) => {
+          card.addEventListener("click", () => {
+            const blog = blogData[card.dataset.blog];
+            if (blog) openBlogModal(blog);
+          });
+        });
+
+        closeBlogBtn.addEventListener("click", closeBlogModal);
+        blogModal.addEventListener("click", (e) => {
+          if (e.target === blogModal) closeBlogModal();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && blogModal.classList.contains("open")) closeBlogModal();
+        });
+      });
+    </script>
+  </body>
+</html>
