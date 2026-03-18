@@ -58,7 +58,10 @@
           </p>
           <div class="hero-cta">
             <a href="#projects" class="btn btn-fill">See My Work</a>
-            <a href="assets/files/Resume_Technical_Anam_Ibn_Jafar.pdf" target="_blank" class="btn btn-ghost">Resume</a>
+            <a href="assets/files/Resume_Technical_Anam_Ibn_Jafar.pdf" target="_blank" class="btn btn-ghost">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              Resume
+            </a>
             <button class="btn btn-ghost" id="intro-video-btn">
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               Watch Intro
@@ -73,6 +76,10 @@
             </a>
             <a href="mailto:anamibnjafar@gmail.com" aria-label="Email">
               <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            </a>
+            <a href="socials.html" target="_blank" class="hero-socials-link">
+              View all socials
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
             </a>
           </div>
         </div>
@@ -498,17 +505,12 @@
 
     <!-- ========== INTRO VIDEO MODAL ========== -->
     <div class="modal" id="intro-modal">
-      <div class="modal-box intro-modal-box">
-        <div class="modal-top">
-          <h2>Introduction</h2>
-          <button class="modal-x" id="close-intro" aria-label="Close">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4L4 14M4 4l10 10"/></svg>
-          </button>
-        </div>
-        <div class="modal-inner">
-          <div class="modal-vid">
-            <iframe id="intro-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
+      <div class="intro-modal-box">
+        <button class="intro-close" id="close-intro" aria-label="Close">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4L4 14M4 4l10 10"/></svg>
+        </button>
+        <div class="intro-vid">
+          <iframe id="intro-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
