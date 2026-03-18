@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+(function () {
   // ====== HERO FLOATING PARTICLES ======
   const dotCanvas = document.getElementById("hero-dots");
   if (dotCanvas) {
@@ -514,4 +514,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
   });
-});
+})();
