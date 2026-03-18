@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Set Up a Cron Job — Anam Ibn Jafar</title>
+    <meta name="description" content="Automate repetitive tasks with cron. A step-by-step guide with a real example — fetching weather data every morning and writing it to a file." />
+    <meta name="author" content="Anam Ibn Jafar" />
+    <link rel="canonical" href="https://anam-jafar.github.io/my_resume/blog/how-to-set-up-a-cron-job/" />
+
+    <meta property="og:title" content="How to Set Up a Cron Job — Anam Ibn Jafar" />
+    <meta property="og:description" content="Automate repetitive tasks with cron. A step-by-step guide with a real example — fetching weather data every morning." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://anam-jafar.github.io/my_resume/blog/how-to-set-up-a-cron-job/" />
+    <meta property="article:published_time" content="2025-07-08" />
+    <meta property="article:author" content="Anam Ibn Jafar" />
+    <meta property="article:tag" content="Linux" />
+    <meta property="article:tag" content="Cron" />
+    <meta property="article:tag" content="Bash" />
+
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="../../css/style.css?v=3" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to Set Up a Cron Job",
+      "description": "Automate repetitive tasks with cron. A step-by-step guide with a real example — fetching weather data every morning.",
+      "datePublished": "2025-07-08",
+      "author": {
+        "@type": "Person",
+        "name": "Anam Ibn Jafar",
+        "url": "https://anam-jafar.github.io/my_resume/"
+      },
+      "keywords": ["Linux", "Cron", "Bash"]
+    }
+    </script>
+  </head>
+  <body>
+
+    <nav class="nav" id="nav">
+      <div class="nav-wrap">
+        <a href="../../#home" class="nav-brand">
+          <img src="../../assets/images/signature.png" alt="Anam Ibn Jafar" class="nav-signature" />
+        </a>
+        <ul class="nav-menu">
+          <li><a href="../../#home" class="nav-link">Home</a></li>
+          <li><a href="../../#about" class="nav-link">About</a></li>
+          <li><a href="../../#experience" class="nav-link">Experience</a></li>
+          <li><a href="../../other-experiences/" class="nav-link">Other Experiences</a></li>
+          <li><a href="../../#projects" class="nav-link">Projects</a></li>
+          <li><a href="../../blog/" class="nav-link active">Blog</a></li>
+          <li><a href="../../#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="../../#home" class="nav-link">Home</a>
+      <a href="../../#about" class="nav-link">About</a>
+      <a href="../../#experience" class="nav-link">Experience</a>
+      <a href="../../other-experiences/" class="nav-link">Other Experiences</a>
+      <a href="../../#projects" class="nav-link">Projects</a>
+      <a href="../../blog/" class="nav-link">Blog</a>
+      <a href="../../#contact" class="nav-link">Contact</a>
+    </div>
+
+    <article class="blog-post-page">
+      <div class="blog-post-wrap">
+        <a href="../../blog/" class="blog-back-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          All Posts
+        </a>
+
+        <header class="blog-post-header">
+          <div class="blog-post-tags">
+            <span class="proj-tag">Linux</span>
+            <span class="proj-tag">Cron</span>
+            <span class="proj-tag">Bash</span>
+          </div>
+          <h1>How to Set Up a Cron Job</h1>
+          <div class="blog-post-author">
+            <img src="../../assets/images/profile_tiny.jpg" alt="Anam Ibn Jafar" class="blog-author-img" />
+            <div>
+              <span class="blog-author-name">Anam Ibn Jafar</span>
+              <time class="blog-post-date" datetime="2025-07-08">8th July, 2025</time>
+            </div>
+          </div>
+        </header>
+
+        <div class="blog-post-body">
+          <h2>What is Cron?</h2>
+          <p>Cron is a time-based job scheduler in Unix/Linux systems. It lets you run scripts or commands automatically at specified intervals — every minute, every hour, every day, or any custom schedule. It's perfect for automating repetitive tasks like backups, log cleanup, data fetching, and more.</p>
+
+          <h2>Cron Syntax</h2>
+          <p>A cron expression has 5 fields:</p>
+          <pre><code>┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ ┌───────────── day of week (0 - 7, 0 and 7 = Sunday)
+│ │ │ │ │
+* * * * *  command_to_run</code></pre>
+          <p>Examples:</p>
+          <ul>
+            <li><code>0 9 * * *</code> — Every day at 9:00 AM</li>
+            <li><code>*/5 * * * *</code> — Every 5 minutes</li>
+            <li><code>0 0 * * 0</code> — Every Sunday at midnight</li>
+            <li><code>30 6 1 * *</code> — 6:30 AM on the 1st of every month</li>
+          </ul>
+
+          <h2>Real Example: Daily Weather Logger</h2>
+          <p>Let's build a cron job that fetches the weather every morning at 7:00 AM and writes it to a log file. We'll use the free <strong>wttr.in</strong> API.</p>
+
+          <h2>Step 1: Create the Script</h2>
+          <pre><code>mkdir -p ~/scripts
+nano ~/scripts/weather.sh</code></pre>
+          <p>Add the following:</p>
+          <pre><code>#!/bin/bash
+
+# Weather logger script
+LOG_FILE="$HOME/weather_log.txt"
+CITY="Dhaka"
+
+# Fetch weather
+WEATHER=$(curl -s "wttr.in/$CITY?format=%C+%t+%h+%w")
+
+# Get current date and time
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+
+# Write to log
+echo "[$TIMESTAMP] $CITY: $WEATHER" >> "$LOG_FILE"</code></pre>
+
+          <h2>Step 2: Make It Executable</h2>
+          <pre><code>chmod +x ~/scripts/weather.sh</code></pre>
+
+          <h2>Step 3: Test It</h2>
+          <pre><code># Run it manually first
+./scripts/weather.sh
+
+# Check the output
+cat ~/weather_log.txt
+# [2025-07-08 07:00:00] Dhaka: Partly cloudy +32°C 78% ↑11km/h</code></pre>
+
+          <h2>Step 4: Set Up the Cron Job</h2>
+          <pre><code># Open the crontab editor
+crontab -e
+
+# Add this line at the bottom:
+0 7 * * * /home/your-username/scripts/weather.sh</code></pre>
+          <p>This runs the script every day at 7:00 AM. The weather info gets appended to <code>~/weather_log.txt</code>.</p>
+
+          <h2>Step 5: Verify</h2>
+          <pre><code># List your cron jobs
+crontab -l
+
+# Check cron logs (Ubuntu)
+grep CRON /var/log/syslog | tail -5</code></pre>
+
+          <h2>Common Gotchas</h2>
+          <ul>
+            <li>Cron uses a minimal environment — always use full paths for commands (e.g., <code>/usr/bin/curl</code> instead of just <code>curl</code>)</li>
+            <li>Redirect errors to see what went wrong: <code>0 7 * * * /home/user/scripts/weather.sh 2>&1 >> /home/user/cron.log</code></li>
+            <li>Make sure the script is executable (<code>chmod +x</code>)</li>
+          </ul>
+          <p>That's it! You now have an automated weather logger. Apply the same pattern to any task — database backups, log rotation, API polling, deployment scripts — the possibilities are endless.</p>
+        </div>
+      </div>
+    </article>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://github.com/Anam-jafar" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/ibn-jafar" target="_blank">LinkedIn</a>
+        <a href="mailto:anamibnjafar@gmail.com">Email</a>
+      </div>
+      <p>Designed & built by Anam Ibn Jafar &copy; 2025</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const html = document.documentElement;
+        const themeBtn = document.getElementById("theme-toggle");
+        const stored = localStorage.getItem("theme");
+        if (stored) { html.setAttribute("data-theme", stored); }
+        else if (window.matchMedia("(prefers-color-scheme: dark)").matches) { html.setAttribute("data-theme", "dark"); }
+        themeBtn.addEventListener("click", () => {
+          const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          html.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+        });
+
+        const nav = document.getElementById("nav");
+        window.addEventListener("scroll", () => { nav.classList.toggle("scrolled", window.scrollY > 30); });
+
+        const hamburger = document.getElementById("nav-hamburger");
+        const mobileNav = document.getElementById("mobile-nav");
+        hamburger.addEventListener("click", () => { mobileNav.classList.toggle("open"); });
+      });
+    </script>
+  </body>
+</html>

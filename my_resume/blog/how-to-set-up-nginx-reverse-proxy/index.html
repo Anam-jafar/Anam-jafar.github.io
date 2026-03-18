@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Set Up Nginx Reverse Proxy — Anam Ibn Jafar</title>
+    <meta name="description" content="Running multiple projects on one server? Nginx reverse proxy routes traffic to the right app using location blocks. A step-by-step guide." />
+    <meta name="author" content="Anam Ibn Jafar" />
+    <link rel="canonical" href="https://anam-jafar.github.io/my_resume/blog/how-to-set-up-nginx-reverse-proxy/" />
+
+    <meta property="og:title" content="How to Set Up Nginx Reverse Proxy — Anam Ibn Jafar" />
+    <meta property="og:description" content="Running multiple projects on one server? Nginx reverse proxy routes traffic to the right app using location blocks." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://anam-jafar.github.io/my_resume/blog/how-to-set-up-nginx-reverse-proxy/" />
+    <meta property="article:published_time" content="2025-06-25" />
+    <meta property="article:author" content="Anam Ibn Jafar" />
+    <meta property="article:tag" content="Nginx" />
+    <meta property="article:tag" content="DevOps" />
+
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="../../css/style.css?v=3" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to Set Up Nginx Reverse Proxy",
+      "description": "Running multiple projects on one server? Nginx reverse proxy routes traffic to the right app using location blocks.",
+      "datePublished": "2025-06-25",
+      "author": {
+        "@type": "Person",
+        "name": "Anam Ibn Jafar",
+        "url": "https://anam-jafar.github.io/my_resume/"
+      },
+      "keywords": ["Nginx", "DevOps"]
+    }
+    </script>
+  </head>
+  <body>
+
+    <nav class="nav" id="nav">
+      <div class="nav-wrap">
+        <a href="../../#home" class="nav-brand">
+          <img src="../../assets/images/signature.png" alt="Anam Ibn Jafar" class="nav-signature" />
+        </a>
+        <ul class="nav-menu">
+          <li><a href="../../#home" class="nav-link">Home</a></li>
+          <li><a href="../../#about" class="nav-link">About</a></li>
+          <li><a href="../../#experience" class="nav-link">Experience</a></li>
+          <li><a href="../../other-experiences/" class="nav-link">Other Experiences</a></li>
+          <li><a href="../../#projects" class="nav-link">Projects</a></li>
+          <li><a href="../../blog/" class="nav-link active">Blog</a></li>
+          <li><a href="../../#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="../../#home" class="nav-link">Home</a>
+      <a href="../../#about" class="nav-link">About</a>
+      <a href="../../#experience" class="nav-link">Experience</a>
+      <a href="../../other-experiences/" class="nav-link">Other Experiences</a>
+      <a href="../../#projects" class="nav-link">Projects</a>
+      <a href="../../blog/" class="nav-link">Blog</a>
+      <a href="../../#contact" class="nav-link">Contact</a>
+    </div>
+
+    <article class="blog-post-page">
+      <div class="blog-post-wrap">
+        <a href="../../blog/" class="blog-back-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          All Posts
+        </a>
+
+        <header class="blog-post-header">
+          <div class="blog-post-tags">
+            <span class="proj-tag">Nginx</span>
+            <span class="proj-tag">DevOps</span>
+          </div>
+          <h1>How to Set Up Nginx Reverse Proxy</h1>
+          <div class="blog-post-author">
+            <img src="../../assets/images/profile_tiny.jpg" alt="Anam Ibn Jafar" class="blog-author-img" />
+            <div>
+              <span class="blog-author-name">Anam Ibn Jafar</span>
+              <time class="blog-post-date" datetime="2025-06-25">25th June, 2025</time>
+            </div>
+          </div>
+        </header>
+
+        <div class="blog-post-body">
+          <h2>What is Nginx?</h2>
+          <p>Nginx (pronounced "engine-x") is a high-performance web server that can also act as a reverse proxy, load balancer, and HTTP cache. It's lightweight, fast, and handles thousands of concurrent connections efficiently.</p>
+
+          <h2>Why Do You Need a Reverse Proxy?</h2>
+          <p>Imagine this: you have a single server running 3 different projects — a Laravel app on port 8000, a FastAPI service on port 8001, and a React app on port 3000. But your server only exposes port 80 (HTTP) and 443 (HTTPS) to the outside world.</p>
+          <p>How do you serve all three? You can't tell users to visit <code>yoursite.com:8001</code>. This is where Nginx reverse proxy comes in — it listens on port 80 and routes requests to the correct app based on the URL path.</p>
+
+          <div class="blog-mermaid">
+            <pre class="mermaid">
+flowchart LR
+    Client["🌐 Client Browser"]
+    Nginx["⚡ Nginx\nReverse Proxy\nPort 80"]
+    App1["🟧 Laravel App\n127.0.0.1:8000"]
+    App2["🟦 FastAPI Service\n127.0.0.1:8001"]
+    App3["🟩 React Dashboard\n127.0.0.1:3000"]
+
+    Client -- "yoursite.com/*" --> Nginx
+    Nginx -- "location /" --> App1
+    Nginx -- "location /api/" --> App2
+    Nginx -- "location /dashboard/" --> App3
+            </pre>
+          </div>
+
+          <h2>Step 1: Install Nginx</h2>
+          <pre><code>sudo apt update
+sudo apt install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx</code></pre>
+
+          <h2>Step 2: Configure Location Blocks</h2>
+          <p>Edit the Nginx config to define a location block for each project. Each prefix route maps to a different backend service.</p>
+          <pre><code>sudo nano /etc/nginx/sites-available/default</code></pre>
+          <p>Replace the contents with:</p>
+          <pre><code>server {
+    listen 80;
+    server_name yoursite.com;
+
+    # Project 1 — Laravel App
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # Project 2 — FastAPI Service
+    location /api/ {
+        proxy_pass http://127.0.0.1:8001/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # Project 3 — React Dashboard
+    location /dashboard/ {
+        proxy_pass http://127.0.0.1:3000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}</code></pre>
+
+          <h2>How It Works</h2>
+          <ul>
+            <li><code>yoursite.com/</code> → hits the Laravel app on port 8000</li>
+            <li><code>yoursite.com/api/users</code> → hits the FastAPI service on port 8001 at <code>/users</code></li>
+            <li><code>yoursite.com/dashboard/</code> → hits the React app on port 3000</li>
+          </ul>
+          <p>Notice the trailing slash in <code>proxy_pass</code> — this strips the prefix. So <code>/api/users</code> gets forwarded as <code>/users</code> to the FastAPI backend.</p>
+
+          <h3>Request Routing Decision Flow</h3>
+          <div class="blog-mermaid">
+            <pre class="mermaid">
+flowchart TD
+    Req["Incoming Request\nyoursite.com/api/users"]
+    Match{{"Nginx matches\nlocation blocks\n(longest prefix wins)"}}
+    L1["/api/ ✅ matches"]
+    L2["/ ✅ matches"]
+    L3["/dashboard/ ❌ no match"]
+    Winner["Winner: /api/\n(longest prefix)"]
+    Strip["Strip prefix /api/\n→ forwarded as /users"]
+    Backend["FastAPI receives\nGET /users on :8001"]
+
+    Req --> Match
+    Match --> L1
+    Match --> L2
+    Match --> L3
+    L1 --> Winner
+    L2 -.->|"shorter prefix,\nlower priority"| Winner
+    Winner --> Strip
+    Strip --> Backend
+            </pre>
+          </div>
+
+          <h2>Step 3: Test and Reload</h2>
+          <pre><code># Test config for syntax errors
+sudo nginx -t
+
+# Reload Nginx
+sudo systemctl reload nginx</code></pre>
+
+          <h2>Bonus: Add SSL with Certbot</h2>
+          <pre><code>sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d yoursite.com</code></pre>
+          <p>Certbot will automatically configure HTTPS and set up auto-renewal. Now all your projects are served securely through a single entry point.</p>
+
+          <h3>With SSL — The Complete Picture</h3>
+          <div class="blog-mermaid">
+            <pre class="mermaid">
+flowchart LR
+    Client["🌐 Client"]
+    SSL["🔒 SSL/TLS\nTermination\nPort 443"]
+    Redirect["Port 80\n→ 301 Redirect"]
+    Nginx["⚡ Nginx"]
+    App1["Laravel\n:8000"]
+    App2["FastAPI\n:8001"]
+    App3["React\n:3000"]
+
+    Client -- "HTTPS" --> SSL
+    Client -. "HTTP" .-> Redirect
+    Redirect -. "→ HTTPS" .-> SSL
+    SSL --> Nginx
+    Nginx -- "plain HTTP" --> App1
+    Nginx -- "plain HTTP" --> App2
+    Nginx -- "plain HTTP" --> App3
+            </pre>
+          </div>
+          <p>Nginx handles SSL termination — meaning encrypted traffic from clients is decrypted at Nginx, then forwarded to your backend apps as plain HTTP over localhost. Your apps never need to deal with certificates.</p>
+        </div>
+      </div>
+    </article>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://github.com/Anam-jafar" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/ibn-jafar" target="_blank">LinkedIn</a>
+        <a href="mailto:anamibnjafar@gmail.com">Email</a>
+      </div>
+      <p>Designed & built by Anam Ibn Jafar &copy; 2025</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const html = document.documentElement;
+        const themeBtn = document.getElementById("theme-toggle");
+        const stored = localStorage.getItem("theme");
+        if (stored) { html.setAttribute("data-theme", stored); }
+        else if (window.matchMedia("(prefers-color-scheme: dark)").matches) { html.setAttribute("data-theme", "dark"); }
+
+        function getMermaidTheme() {
+          return html.getAttribute("data-theme") === "dark" ? "dark" : "default";
+        }
+
+        document.querySelectorAll(".mermaid").forEach(el => {
+          el.setAttribute("data-original", el.innerHTML);
+        });
+        mermaid.initialize({ startOnLoad: true, theme: getMermaidTheme(), securityLevel: "loose" });
+
+        themeBtn.addEventListener("click", () => {
+          const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          html.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+          mermaid.initialize({ startOnLoad: false, theme: next === "dark" ? "dark" : "default", securityLevel: "loose" });
+          document.querySelectorAll(".mermaid[data-processed]").forEach(el => {
+            el.removeAttribute("data-processed");
+            el.innerHTML = el.getAttribute("data-original");
+          });
+          mermaid.init(undefined, ".mermaid");
+        });
+
+        const nav = document.getElementById("nav");
+        window.addEventListener("scroll", () => { nav.classList.toggle("scrolled", window.scrollY > 30); });
+
+        const hamburger = document.getElementById("nav-hamburger");
+        const mobileNav = document.getElementById("mobile-nav");
+        hamburger.addEventListener("click", () => { mobileNav.classList.toggle("open"); });
+      });
+    </script>
+  </body>
+</html>
